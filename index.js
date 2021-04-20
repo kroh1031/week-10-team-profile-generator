@@ -38,7 +38,7 @@ const init = () => {
   inquirer
     .prompt(questions)
     .then((data) => {
-      fs.writeFile("index.html", generateHTML(data), (err) =>
+      fs.writeFile("./dist/index.html", generateHTML(data), (err) =>
         err ? console.log(err) : console.log("Generating HTML...")
       );
     })
