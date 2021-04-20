@@ -1,5 +1,5 @@
 const generateHTML = (data) => {
-  console.log(data);
+  return `${data.managerName}`;
 };
 
 module.exports = generateHTML;

@@ -10,7 +10,28 @@ const questions = [
   {
     type: "input",
     message: "Please enter the team manager's name",
-    name: "team manager name",
+    name: "managerName",
+  },
+  {
+    type: "input",
+    message: "Please enter the team manager's employee ID",
+    name: "managerId",
+  },
+  {
+    type: "input",
+    message: "Please enter the team manager's email address",
+    name: "managerEmail",
+  },
+  {
+    type: "input",
+    message: "Please enter the team manager's office number",
+    name: "managerOfficeNumber",
+  },
+  {
+    type: "list",
+    message: "Which team member would you like to add?",
+    name: "member",
+    choices: ["Engineer", "Intern"],
   },
 ];
 const init = () => {
