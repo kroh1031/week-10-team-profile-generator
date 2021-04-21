@@ -1,18 +1,19 @@
 const renderManager = (data) => {
+  console.log(data);
   return `<!-- Manager Card -->
-    <div class="col-md-4">
-      <div class="card shadow mt-5" style="width: 18rem">
-        <div class="card-body bg-primary text-white">
-          <h3 class="card-title">${data.managerName}</h3>
-          <h3 class="card-text">Manager</h3>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${data.managerId}</li>
-          <li class="list-group-item">Email: ${data.managerEmail}</li>
-          <li class="list-group-item">Office number: ${data.managerOfficeNumber}</li>
-        </ul>
-      </div>
-    </div>`;
+        <div class="col-md-4">
+          <div class="card shadow mt-5" style="width: 18rem">
+            <div class="card-body bg-primary text-white">
+              <h3 class="card-title">${data[0].name}</h3>
+              <h3 class="card-text">Manager</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ID: ${data[0].id}</li>
+              <li class="list-group-item">Email: ${data[0].email}</li>
+              <li class="list-group-item">Office number: ${data[0].officeNumber}</li>
+            </ul>
+          </div>
+        </div>`;
 };
 
 const generateHTML = (data) => {

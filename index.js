@@ -7,6 +7,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const {
   chooseType,
+  addEmployee,
   managerQuestions,
   engineerQuestions,
   internQuestions,
@@ -24,59 +25,74 @@ const init = () => {
         askEngineerQuestions();
       } else if (data.member === "Intern") {
         askInternQuestions();
-      } else {
-        return;
       }
-      // fs.writeFile("./dist/index.html", generateHTML(data), (err) =>
-      //   err ? console.log(err) : console.log("Generating HTML...")
-      // );
     })
     .catch((err) => console.log(err));
 };
 
 init();
 
+// Ask if want to add employee
+const askAddEmployee = () => {
+  inquirer.prompt(addEmployee).then((data) => {
+    if (data.addEmployee === "Manager") {
+      askManagerQuestions();
+    } else if (data.addEmployee === "Engineer") {
+      askEngineerQuestions();
+    } else if (data.addEmployee === "Intern") {
+      askInternQuestions();
+    } else {
+      fs.writeFile("./dist/index.html", generateHTML(employeesArray), (err) =>
+        err ? console.log(err) : console.log("Generating HTML...")
+      );
+    }
+  });
+};
+
 // Manager Questions
 const askManagerQuestions = () => {
-  inquirer.prompt(managerQuestions).then((answers) => {
+  inquirer.prompt(managerQuestions).then((data) => {
     employeesArray.push(
       new Manager(
-        answers.managerName,
-        answers.managerId,
-        answers.managerEmail,
-        answers.managerOfficeNumber
+        data.managerName,
+        data.managerId,
+        data.managerEmail,
+        data.managerOfficeNumber
       )
     );
-    console.log(employeesArray);
+    askAddEmployee();
+    // console.log(employeesArray);
   });
 };
 
 // Engineer Questions
 const askEngineerQuestions = () => {
-  inquirer.prompt(engineerQuestions).then((answers) => {
+  inquirer.prompt(engineerQuestions).then((data) => {
     employeesArray.push(
       new Engineer(
-        answers.engineerName,
-        answers.engineerId,
-        answers.engineerEmail,
-        answers.engineerGithub
+        data.engineerName,
+        data.engineerId,
+        data.engineerEmail,
+        data.engineerGithub
       )
     );
-    console.log(employeesArray);
+    askAddEmployee();
+    // console.log(employeesArray);
   });
 };
 
 // Intern Questions
 const askInternQuestions = () => {
-  inquirer.prompt(internQuestions).then((answers) => {
+  inquirer.prompt(internQuestions).then((data) => {
     employeesArray.push(
       new Intern(
-        answers.internName,
-        answers.internId,
-        answers.internEmail,
-        answers.internSchool
+        data.internName,
+        data.internId,
+        data.internEmail,
+        data.internSchool
       )
     );
-    console.log(employeesArray);
+    askAddEmployee();
+    // console.log(employeesArray);
   });
 };
