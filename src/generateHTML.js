@@ -1,5 +1,23 @@
+const renderManager = (data) => {
+  return `<!-- Manager Card -->
+    <div class="col-md-4">
+      <div class="card shadow mt-5" style="width: 18rem">
+        <div class="card-body bg-primary text-white">
+          <h3 class="card-title">${data.managerName}</h3>
+          <h3 class="card-text">Manager</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${data.managerId}</li>
+          <li class="list-group-item">Email: ${data.managerEmail}</li>
+          <li class="list-group-item">Office number: ${data.managerOfficeNumber}</li>
+        </ul>
+      </div>
+    </div>`;
+};
+
 const generateHTML = (data) => {
-  return `<!DOCTYPE html>
+  return `
+  <!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="UTF-8" />
@@ -21,23 +39,14 @@ const generateHTML = (data) => {
           <h1 class="mb-0 h1 text-center text-white">My Team</h1>
         </div>
       </nav>
-      <!-- Manager Card -->
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-4">
-            <div class="card shadow mt-5" style="width: 18rem">
-              <div class="card-body bg-primary text-white">
-                <h3 class="card-title">${data.managerName}</h3>
-                <h3 class="card-text">Manager</h3>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${data.managerId}</li>
-                <li class="list-group-item">Email: ${data.managerEmail}</li>
-                <li class="list-group-item">Office number: ${data.managerOfficeNumber}</li>
-              </ul>
-            </div>
-          </div>
-        </div>`;
+        ${renderManager(data)}
+        </div>
+      </div>
+    </body>
+  </html>`;
 };
-
+//Steps need to take:
+//1.
 module.exports = generateHTML;

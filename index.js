@@ -1,48 +1,56 @@
-const Employee = require("./lib/Employee");
-
+// const Employee = require("./lib/Employee");
+const Engineer = require("./lib/Engineer");
+// const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 const inquirer = require("inquirer");
 
 const fs = require("fs");
-
+const { chooseType, managerQuestions, engineerQuestions } = require("./questions");
 const generateHTML = require("./src/generateHTML");
 
-const questions = [
-  {
-    type: "input",
-    message: "Please enter the team manager's name",
-    name: "managerName",
-  },
-  {
-    type: "input",
-    message: "Please enter the team manager's employee ID",
-    name: "managerId",
-  },
-  {
-    type: "input",
-    message: "Please enter the team manager's email address",
-    name: "managerEmail",
-  },
-  {
-    type: "input",
-    message: "Please enter the team manager's office number",
-    name: "managerOfficeNumber",
-  },
-  {
-    type: "list",
-    message: "Which team member would you like to add?",
-    name: "member",
-    choices: ["Engineer", "Intern"],
-  },
-];
+let employeesArray = [];
 const init = () => {
   inquirer
-    .prompt(questions)
+    .prompt(chooseType)
     .then((data) => {
-      fs.writeFile("./dist/index.html", generateHTML(data), (err) =>
-        err ? console.log(err) : console.log("Generating HTML...")
-      );
+      if (data.member === "Manager") {
+        askManagerQuestions();
+      } else if (data.member === "Engineer") {
+        askEngineerQuestions();
+      }
+      // fs.writeFile("./dist/index.html", generateHTML(data), (err) =>
+      //   err ? console.log(err) : console.log("Generating HTML...")
+      // );
     })
     .catch((err) => console.log(err));
 };
 
 init();
+
+const askManagerQuestions = () => {
+  inquirer.prompt(managerQuestions).then((answers) => {
+    employeesArray.push(
+      new Manager(
+        answers.managerName,
+        answers.managerId,
+        answers.managerEmail,
+        answers.managerOfficeNumber
+      )
+    );
+    console.log(employeesArray);
+  });
+};
+
+const askEngineerQuestions = () => {
+  inquirer.prompt(engineerQuestions).then((answers) => {
+    employeesArray.push(
+      new Engineer(
+        answers.engineerName
+        // answers.managerId,
+        // answers.managerEmail,
+        // answers.managerOfficeNumber
+      )
+    );
+    console.log(employeesArray);
+  });
+};
