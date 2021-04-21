@@ -1,10 +1,11 @@
 // const Employee = require("./lib/Employee");
+// Dependencies
+const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Manager = require("./lib/Manager");
 const inquirer = require("inquirer");
-
 const fs = require("fs");
+const generateHTML = require("./src/generateHTML");
 const {
   chooseType,
   addEmployee,
@@ -12,9 +13,11 @@ const {
   engineerQuestions,
   internQuestions,
 } = require("./lib/questions");
-const generateHTML = require("./src/generateHTML");
 
+// Array with all employee data
 let employeesArray = [];
+
+// When app initialized...
 const init = () => {
   inquirer
     .prompt(chooseType)
@@ -49,7 +52,7 @@ const askAddEmployee = () => {
   });
 };
 
-// Manager Questions
+// Prompt Manager Questions
 const askManagerQuestions = () => {
   inquirer.prompt(managerQuestions).then((data) => {
     employeesArray.push(
@@ -65,7 +68,7 @@ const askManagerQuestions = () => {
   });
 };
 
-// Engineer Questions
+// Prompt Engineer Questions
 const askEngineerQuestions = () => {
   inquirer.prompt(engineerQuestions).then((data) => {
     employeesArray.push(
@@ -77,11 +80,10 @@ const askEngineerQuestions = () => {
       )
     );
     askAddEmployee();
-    // console.log(employeesArray);
   });
 };
 
-// Intern Questions
+// Prompt Intern Questions
 const askInternQuestions = () => {
   inquirer.prompt(internQuestions).then((data) => {
     employeesArray.push(
@@ -93,6 +95,5 @@ const askInternQuestions = () => {
       )
     );
     askAddEmployee();
-    // console.log(employeesArray);
   });
 };
