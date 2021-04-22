@@ -1,9 +1,10 @@
+// TODO: Render manager card
 const renderManager = (data) => {
-  console.log(data);
+  //   console.log(data);
   let arrayofManagers = data.filter(
     (employee) => employee.getRole() === "Manager"
   );
-  console.log(arrayofManagers);
+  //   console.log(arrayofManagers);
   let managerHTML = [];
   arrayofManagers.forEach((manager) => {
     managerHTML.push(`<!-- Manager Card -->
@@ -21,7 +22,64 @@ const renderManager = (data) => {
                 </div>
               </div>`);
   });
+  //   console.log(managerHTML);
   return managerHTML.join("");
+};
+
+// TODO: Render engineer card
+const renderEngineer = (data) => {
+  //   console.log(data);
+  let arrayofEngineers = data.filter(
+    (employee) => employee.getRole() === "Engineer"
+  );
+  //   console.log(arrayofEngineers);
+  let engineerHTML = [];
+  arrayofEngineers.forEach((engineer) => {
+    engineerHTML.push(`<!-- Engineer Card -->
+    <div class="col-md-4">
+      <div class="card shadow mt-5" style="width: 18rem">
+        <div class="card-body bg-primary text-white">
+          <h3 class="card-title">${engineer.name}</h3>
+          <h3 class="card-text">Engineer</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${engineer.id}</li>
+          <li class="list-group-item">Email: ${engineer.email}</li>
+          <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
+        </ul>
+      </div>
+    </div>`);
+  });
+  //   console.log(engineerHTML);
+  return engineerHTML.join("");
+};
+
+// TODO: Render intern card
+const renderIntern = (data) => {
+  //   console.log(data);
+  let arrayofInterns = data.filter(
+    (employee) => employee.getRole() === "Intern"
+  );
+  //   console.log(arrayofInterns);
+  let internHTML = [];
+  arrayofInterns.forEach((intern) => {
+    internHTML.push(`<!-- Intern Card -->
+        <div class="col-md-4">
+          <div class="card shadow mt-5" style="width: 18rem">
+            <div class="card-body bg-primary text-white">
+              <h3 class="card-title">${intern.name}</h3>
+              <h3 class="card-text">Intern</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">ID: ${intern.id}</li>
+              <li class="list-group-item">Email: ${intern.email}</li>
+              <li class="list-group-item">School: ${intern.getSchool()}</li>
+            </ul>
+          </div>
+        </div>`);
+  });
+  //   console.log(internHTML);
+  return internHTML.join("");
 };
 
 const generateHTML = (data) => {
@@ -51,11 +109,12 @@ const generateHTML = (data) => {
       <div class="container">
         <div class="row justify-content-center">
         ${renderManager(data)}
+        ${renderEngineer(data)}
+        ${renderIntern(data)}
         </div>
       </div>
     </body>
   </html>`;
 };
-//Steps need to take:
-//1.
+
 module.exports = generateHTML;
