@@ -18,7 +18,7 @@ const renderManager = (data) => {
                     <li class="list-group-item">ID: ${manager.id}</li>
                     <li class="list-group-item">
                     Email:
-                    <a href="mailto:${manager.email}">${manager.email}</a>
+                    <a href="mailto:${manager.email}" class="no-underline">${manager.email}</a>
                     </li>
                     <li class="list-group-item">Office number: ${manager.officeNumber}</li>
                   </ul>
@@ -49,11 +49,13 @@ const renderEngineer = (data) => {
           <li class="list-group-item">ID: ${engineer.id}</li>
           <li class="list-group-item">
                     Email:
-                    <a href="mailto:${engineer.email}">${engineer.email}</a>
+                    <a href="mailto:${engineer.email}" class="no-underline">${
+      engineer.email
+    }</a>
           </li>
           <li class="list-group-item">
           GitHub:
-          <a href="https://github.com/${engineer.getGithub()}" target="_blank"
+          <a href="https://github.com/${engineer.getGithub()}" target="_blank" class="no-underline"
             >${engineer.getGithub()}</a
           >
         </li>
@@ -87,7 +89,9 @@ const renderIntern = (data) => {
               <li class="list-group-item">ID: ${intern.id}</li>
               <li class="list-group-item">
                     Email:
-                    <a href="mailto:${intern.email}">${intern.email}</a>
+                    <a href="mailto:${intern.email}" class="no-underline">${
+      intern.email
+    }</a>
               </li>
               <li class="list-group-item">School: ${intern.getSchool()}</li>
             </ul>
@@ -107,6 +111,12 @@ const generateHTML = (data) => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
+      <!-- Internal CSS -->
+      <style>
+      .no-underline {
+        text-decoration: none;
+      }
+      </style>
       <!-- Bootstrap -->
       <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
