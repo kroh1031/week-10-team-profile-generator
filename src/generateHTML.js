@@ -16,7 +16,10 @@ const renderManager = (data) => {
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${manager.id}</li>
-                    <li class="list-group-item">Email: ${manager.email}</li>
+                    <li class="list-group-item">
+                    Email:
+                    <a href="mailto:${manager.email}">${manager.email}</a>
+                    </li>
                     <li class="list-group-item">Office number: ${manager.officeNumber}</li>
                   </ul>
                 </div>
@@ -44,7 +47,10 @@ const renderEngineer = (data) => {
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${engineer.id}</li>
-          <li class="list-group-item">Email: ${engineer.email}</li>
+          <li class="list-group-item">
+                    Email:
+                    <a href="mailto:${engineer.email}">${engineer.email}</a>
+          </li>
           <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
         </ul>
       </div>
@@ -72,7 +78,10 @@ const renderIntern = (data) => {
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${intern.id}</li>
-              <li class="list-group-item">Email: ${intern.email}</li>
+              <li class="list-group-item">
+                    Email:
+                    <a href="mailto:${intern.email}">${intern.email}</a>
+              </li>
               <li class="list-group-item">School: ${intern.getSchool()}</li>
             </ul>
           </div>
@@ -118,3 +127,21 @@ const generateHTML = (data) => {
 };
 
 module.exports = generateHTML;
+
+// GIVEN a command-line application that accepts user input
+// WHEN I am prompted for my team members and their information
+// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
+// WHEN I click on an email address in the HTML
+// THEN my default email program opens and populates the TO field of the email with the address
+// WHEN I click on the GitHub username
+// THEN that GitHub profile opens in a new tab
+// WHEN I start the application
+// THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
+// WHEN I enter the team manager’s name, employee ID, email address, and office number
+// THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
+// WHEN I select the engineer option
+// THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
+// WHEN I select the intern option
+// THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
+// WHEN I decide to finish building my team
+// THEN I exit the application, and the HTML is generated

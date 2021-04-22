@@ -37,63 +37,75 @@ init();
 
 // Ask if want to add employee
 const askAddEmployee = () => {
-  inquirer.prompt(addEmployee).then((data) => {
-    if (data.addEmployee === "Manager") {
-      askManagerQuestions();
-    } else if (data.addEmployee === "Engineer") {
-      askEngineerQuestions();
-    } else if (data.addEmployee === "Intern") {
-      askInternQuestions();
-    } else {
-      fs.writeFile("./dist/index.html", generateHTML(employeesArray), (err) =>
-        err ? console.log(err) : console.log("Generating HTML...")
-      );
-    }
-  });
+  inquirer
+    .prompt(addEmployee)
+    .then((data) => {
+      if (data.addEmployee === "Manager") {
+        askManagerQuestions();
+      } else if (data.addEmployee === "Engineer") {
+        askEngineerQuestions();
+      } else if (data.addEmployee === "Intern") {
+        askInternQuestions();
+      } else {
+        fs.writeFile("./dist/index.html", generateHTML(employeesArray), (err) =>
+          err ? console.log(err) : console.log("Generating HTML...")
+        );
+      }
+    })
+    .catch((err) => console.log(err));
 };
 
 // Prompt Manager Questions
 const askManagerQuestions = () => {
-  inquirer.prompt(managerQuestions).then((data) => {
-    employeesArray.push(
-      new Manager(
-        data.managerName,
-        data.managerId,
-        data.managerEmail,
-        data.managerOfficeNumber
-      )
-    );
-    askAddEmployee();
-    // console.log(employeesArray);
-  });
+  inquirer
+    .prompt(managerQuestions)
+    .then((data) => {
+      employeesArray.push(
+        new Manager(
+          data.managerName,
+          data.managerId,
+          data.managerEmail,
+          data.managerOfficeNumber
+        )
+      );
+      askAddEmployee();
+      // console.log(employeesArray);
+    })
+    .catch((err) => console.log(err));
 };
 
 // Prompt Engineer Questions
 const askEngineerQuestions = () => {
-  inquirer.prompt(engineerQuestions).then((data) => {
-    employeesArray.push(
-      new Engineer(
-        data.engineerName,
-        data.engineerId,
-        data.engineerEmail,
-        data.engineerGithub
-      )
-    );
-    askAddEmployee();
-  });
+  inquirer
+    .prompt(engineerQuestions)
+    .then((data) => {
+      employeesArray.push(
+        new Engineer(
+          data.engineerName,
+          data.engineerId,
+          data.engineerEmail,
+          data.engineerGithub
+        )
+      );
+      askAddEmployee();
+    })
+    .catch((err) => console.log(err));
 };
 
 // Prompt Intern Questions
 const askInternQuestions = () => {
-  inquirer.prompt(internQuestions).then((data) => {
-    employeesArray.push(
-      new Intern(
-        data.internName,
-        data.internId,
-        data.internEmail,
-        data.internSchool
-      )
-    );
-    askAddEmployee();
-  });
+  inquirer
+    .prompt(internQuestions)
+    .then((data) => {
+      employeesArray.push(
+        new Intern(
+          data.internName,
+          data.internId,
+          data.internEmail,
+          data.internSchool
+        )
+      );
+      askAddEmployee();
+    })
+    .catch((err) => console.log(err));
 };
