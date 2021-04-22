@@ -1,21 +1,27 @@
 const renderManager = (data) => {
   console.log(data);
-  data.forEach((index) => {
-    return `<!-- Manager Card -->
-            <div class="col-md-4">
-              <div class="card shadow mt-5" style="width: 18rem">
-                <div class="card-body bg-primary text-white">
-                  <h3 class="card-title">${index.name}</h3>
-                  <h3 class="card-text">Manager</h3>
+  let arrayofManagers = data.filter(
+    (employee) => employee.getRole() === "Manager"
+  );
+  console.log(arrayofManagers);
+  let managerHTML = [];
+  arrayofManagers.forEach((manager) => {
+    managerHTML.push(`<!-- Manager Card -->
+              <div class="col-md-4">
+                <div class="card shadow mt-5" style="width: 18rem">
+                  <div class="card-body bg-primary text-white">
+                    <h3 class="card-title">${manager.name}</h3>
+                    <h3 class="card-text">Manager</h3>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${manager.id}</li>
+                    <li class="list-group-item">Email: ${manager.email}</li>
+                    <li class="list-group-item">Office number: ${manager.officeNumber}</li>
+                  </ul>
                 </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">ID: ${index.id}</li>
-                  <li class="list-group-item">Email: ${index.email}</li>
-                  <li class="list-group-item">Office number: ${index.officeNumber}</li>
-                </ul>
-              </div>
-            </div>`;
+              </div>`);
   });
+  return managerHTML.join("");
 };
 
 const generateHTML = (data) => {
