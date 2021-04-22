@@ -12,7 +12,7 @@ const renderManager = (data) => {
                 <div class="card shadow mt-5" style="width: 18rem">
                   <div class="card-body bg-primary text-white">
                     <h3 class="card-title">${manager.name}</h3>
-                    <h3 class="card-text">Manager</h3>
+                    <h3 class="card-text"><i class="fas fa-mug-hot"></i> Manager</h3>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${manager.id}</li>
@@ -43,7 +43,7 @@ const renderEngineer = (data) => {
       <div class="card shadow mt-5" style="width: 18rem">
         <div class="card-body bg-primary text-white">
           <h3 class="card-title">${engineer.name}</h3>
-          <h3 class="card-text">Engineer</h3>
+          <h3 class="card-text"><i class="fas fa-glasses"></i> Engineer</h3>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${engineer.id}</li>
@@ -79,7 +79,9 @@ const renderIntern = (data) => {
           <div class="card shadow mt-5" style="width: 18rem">
             <div class="card-body bg-primary text-white">
               <h3 class="card-title">${intern.name}</h3>
-              <h3 class="card-text">Intern</h3>
+              <h3 class="card-text">
+              <i class="fas fa-user-graduate"></i> Intern
+            </h3>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${intern.id}</li>
@@ -110,6 +112,13 @@ const generateHTML = (data) => {
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+        crossorigin="anonymous"
+      />
+      <!-- Font Awesome -->
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
         crossorigin="anonymous"
       />
     </head>
