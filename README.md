@@ -29,10 +29,10 @@ npm i
 ## Usage
 
 Here's the link to my walkthrough video that demonstrates the app's functionality:  
-[Team Profile Generator Project Walkthrough Video!](https://drive.google.com/file/d/)
+[Team Profile Generator Project Walkthrough Video!](https://drive.google.com/file/d/1w3OO07lFXxPuEI1wt_p6OvvZq7ERBkeO/view)
 
 The following image shows a mock-up of the generated HTML’s appearance and functionality:
-![HTML webpage titled "My Team" features five boxes listing employee names, titles, and other key info.](./images)
+![HTML webpage titled "My Team" features five boxes listing employee names, titles, and other key info.](./images/my-team-html.png)
 
 ## License
 
