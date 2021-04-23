@@ -1,10 +1,8 @@
 // TODO: Render manager card
 const renderManager = (data) => {
-  //   console.log(data);
   let arrayofManagers = data.filter(
     (employee) => employee.getRole() === "Manager"
   );
-  //   console.log(arrayofManagers);
   let managerHTML = [];
   arrayofManagers.forEach((manager) => {
     managerHTML.push(`<!-- Manager Card -->
@@ -25,17 +23,14 @@ const renderManager = (data) => {
                 </div>
               </div>`);
   });
-  //   console.log(managerHTML);
   return managerHTML.join("");
 };
 
 // TODO: Render engineer card
 const renderEngineer = (data) => {
-  //   console.log(data);
   let arrayofEngineers = data.filter(
     (employee) => employee.getRole() === "Engineer"
   );
-  //   console.log(arrayofEngineers);
   let engineerHTML = [];
   arrayofEngineers.forEach((engineer) => {
     engineerHTML.push(`<!-- Engineer Card -->
@@ -63,17 +58,14 @@ const renderEngineer = (data) => {
       </div>
     </div>`);
   });
-  //   console.log(engineerHTML);
   return engineerHTML.join("");
 };
 
 // TODO: Render intern card
 const renderIntern = (data) => {
-  //   console.log(data);
   let arrayofInterns = data.filter(
     (employee) => employee.getRole() === "Intern"
   );
-  //   console.log(arrayofInterns);
   let internHTML = [];
   arrayofInterns.forEach((intern) => {
     internHTML.push(`<!-- Intern Card -->
@@ -98,7 +90,6 @@ const renderIntern = (data) => {
           </div>
         </div>`);
   });
-  //   console.log(internHTML);
   return internHTML.join("");
 };
 
@@ -151,21 +142,3 @@ const generateHTML = (data) => {
 };
 
 module.exports = generateHTML;
-
-// GIVEN a command-line application that accepts user input
-// WHEN I am prompted for my team members and their information
-// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-// WHEN I click on an email address in the HTML
-// THEN my default email program opens and populates the TO field of the email with the address
-// WHEN I click on the GitHub username
-// THEN that GitHub profile opens in a new tab
-// WHEN I start the application
-// THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-// WHEN I enter the team manager’s name, employee ID, email address, and office number
-// THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-// WHEN I select the engineer option
-// THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-// WHEN I select the intern option
-// THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-// WHEN I decide to finish building my team
-// THEN I exit the application, and the HTML is generated
